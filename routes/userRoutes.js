@@ -56,9 +56,14 @@ router.post("/users/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const updates = req.body;
+
+    console.log(updates)
+
     const updatedUser = await userController.updateUser(id, updates);
 
-    res.status(201).json(updatedUser);
+    const updatedUsers = await userController.getAllUser()
+
+    res.status(201).json({message:"user updated successfully",users:updatedUsers});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

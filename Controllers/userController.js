@@ -30,7 +30,7 @@ async function createUser({firstName,lastName,email,mobileNo,address1,address2,s
     }
 }
 
-async function updateUser({userId,updates}){
+async function updateUser(userId,updates){
     try {
         const updatedUser = await Users.findByIdAndUpdate(userId,updates,{new:true})
         return updatedUser
